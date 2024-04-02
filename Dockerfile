@@ -1,8 +1,8 @@
-FROM continuumio/miniconda3
+FROM mambaorg/micromamba
 
 COPY environment.yml .
-RUN --mount=type=cache,target=/opt/conda/pkgs \
-    conda env create -y -f environment.yml
+RUN --mount=type=cache,uid=$MAMBA_USER_ID,gid=$MAMBA_USER_GID,target=/opt/conda/pkgs \
+    micromamba env create -y -f environment.yml
 ENV PATH=/opt/conda/envs/my-env/bin:$PATH
 
 COPY . .
