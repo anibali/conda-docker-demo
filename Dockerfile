@@ -1,8 +1,8 @@
 FROM mambaorg/micromamba
 
-COPY environment.yml .
+COPY conda-lock.yml .
 RUN --mount=type=cache,uid=$MAMBA_USER_ID,gid=$MAMBA_USER_GID,target=/opt/conda/pkgs \
-    micromamba env create -y -f environment.yml
+    micromamba env create -y -n my-env -f conda-lock.yml
 ENV PATH=/opt/conda/envs/my-env/bin:$PATH
 
 COPY . .

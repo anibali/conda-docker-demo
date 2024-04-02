@@ -1,9 +1,0 @@
-name: my-env
-channels:
-  - pytorch
-  - conda-forge
-dependencies:
-  - cpuonly
-  - numpy=1.26.4
-  - python=3.11.8
-  - pytorch=2.2.2
